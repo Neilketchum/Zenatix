@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import './Styles/SearchString.css'
 export class SearchString extends Component {
     constructor(props) {
         super(props);
@@ -13,15 +14,20 @@ export class SearchString extends Component {
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
+    getHighlightedText(text, highlight) {
+        // Split text on highlight term, include term itself into parts, ignore case
+        const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+        return <span>{parts.map(part => part.toLowerCase() === highlight.toLowerCase() ? <b>{part}</b> : part)}</span>;
+    }
     render() {
         // const postItems = 
         return (
             <div>
                 <input type = 'text' name = 'body' value = {this.state.body} onChange = {this.onChange}></input>
                 {
-                    this.props.strings.filter(name => name.includes(this.state.body)).map(filteredName => (
+                    this.props.strings.filter(name => name.toLowerCase().includes(this.state.body.toLowerCase())).map(filteredName => (
                         <li>
-                          {filteredName}
+                            {this.getHighlightedText(filteredName,this.state.body)}
                         </li>
                       ))
                 }
