@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Provider} from 'react-redux'
 import store from './store'
 import AddString  from './Components/AddString'
+import './App.css'
 import  SearchString  from './Components/SearchString'
 export class App extends Component {
   render() {

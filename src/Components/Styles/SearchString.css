@@ -1,3 +1,50 @@
-.strSear{
-    background-color: blueviolet;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+.searchString{
+    position: absolute;
+    left:30%;
+    top:30%;
+    background-color:#e1f5fe ;
+    padding: 30px;
+    border: 0px solid white;
+    border-radius: 8px;
+    overflow-y: scroll;
+    max-height:300px;
+    height: 50%;
+    font-family: 'Roboto', sans-serif;
+
 }
+.searchString__input{
+    padding: 3px;
+    width:520px;
+    border-radius: 5px;
+    border:0px solid;
+    height:32px;
+    background-color: #bbb5c3;
+    margin-bottom:5px ;
+    font-family: 'Roboto', sans-serif;
+}
+.searchString::-webkit-scrollbar {
+    width: 3px;               /* width of the entire scrollbar */
+  }
+  .searchString::-webkit-scrollbar-track {
+    background: #757de8;        /* color of the tracking area */
+  }
+  .searchString::-webkit-scrollbar-thumb {
+    background-color: #757de8;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid #ede7f6;  /* creates padding around scroll thumb */
+  }
+  .searchString__result{
+      text-align: center;
+      background-color:#9fa8da;
+      padding: 4px;
+      margin: 2px;
+      border-radius: 6px;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+  }
+  .searchString__highlight{
+      padding: 3px;
+      background-color: white;
+      color: #757de8;
+  }

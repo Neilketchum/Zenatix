@@ -6,43 +6,48 @@ export class SearchString extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            body:""
+            body: ""
         };
-    
+
         this.onChange = this.onChange.bind(this);
     }
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
     getHighlightedText(text, highlight) {
-        // Split text on highlight term, include term itself into parts, ignore case
+
         const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
-        return <span>{parts.map(part => part.toLowerCase() === highlight.toLowerCase() ? <b>{part}</b> : part)}</span>;
+        return <span>{parts.map(part => part.toLowerCase() === highlight.toLowerCase() ? <b className="searchString__highlight">{part}</b> : part)}</span>;
     }
     render() {
-        // const postItems = 
+
         return (
-            <div>
-                <input type = 'text' name = 'body' value = {this.state.body} onChange = {this.onChange}></input>
+            <div className = "searchString">
+                <input type='text' name='body' className = "searchString__input" value={this.state.body} onChange={this.onChange} ></input>
                 {
                     this.props.strings.filter(name => name.toLowerCase().includes(this.state.body.toLowerCase())).map(filteredName => (
-                        <li>
-                            {this.getHighlightedText(filteredName,this.state.body)}
-                        </li>
-                      ))
+                        <div className = "searchString__result">
+
+                             { 
+                                this.state.body.length>0?
+                                this.getHighlightedText(filteredName, this.state.body):filteredName
+                             }
+                         </div>   
+    
+                    ))
                 }
             </div>
         )
     }
 }
 SearchString.propTypes = {
-  
+
     strings: PropTypes.array.isRequired,
-    
-  };
-  
-  const mapStateToProps = state => ({
-        strings : state.AddString.strings
-  });
-  
+
+};
+
+const mapStateToProps = state => ({
+    strings: state.AddString.strings
+});
+
 export default connect(mapStateToProps)(SearchString)

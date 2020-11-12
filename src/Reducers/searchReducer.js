@@ -1,7 +1,7 @@
 import { ADD_STRING } from '../Actions/types';
 
 const initialState = {
-    strings: ["Hello","World","MATERIALUI","ReactJS","HOOKSLOVE","REDUX","JAVASCRIPT","NODEJS","SPRINGBOOT","HIBERNATE"],
+    strings: ["MATERIALUI","ReactJS","HOOKS-LOVE","REDUX","JAVASCRIPT","NODEJS","SPRINGBOOT","HIBERNATE"],
 
 };
 // eslint-disable-next-line import/no-anonymous-default-export
